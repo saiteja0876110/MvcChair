@@ -36,26 +36,72 @@ Tested — working properly.
 Tested HelloWorldController with and without parameters — all working correctly.
 0959
 Created a new view: Index.cshtml under Views/HelloWorld/.
-
+1011
 Used Razor view engine to combine C# and HTML.
+1015
 Tested on localhost — working properly.
+1019
 Created a new view called Chairs.
+1024
 Passed dynamic parameters from controller.
+1028
 Tested with and without parameters — all functioning correctly.
+1031
 Used scaffolding to generate CRUD views and ChairsController.
 2025-06-01 
 1160123
 Ran migrations to create the Chair database:
 20250601160123_InitialCreate.cs
-2011
+now run and test the code == it works!!!
+1211
 We are working on the Seeding Data
+1212
+now add the data in the file
+1214
 Demonstrated how to seed the database with initial chair data using a custom initializer.
+now change the index in the dfile Index.cshtml as given in.
+1215
+now examine the file  Program.cs
+1217
+now open the view menu and the sql server objevt exploer and
+Right-click on the Movie table (dbo.Movie) then View Designer
+1219
+now checked the view Data.
+1221
+now add the new class in model name Seeddata.cs
+1222
+now add thecode th in the file.
+1224
+open program.cs
+1225
 Added data annotations and placeholder attributes to the Chair model for improved UI/UX.
+1227
+now adding seed installer in the file edit the code.
+1228
+run and test the code, It works!!
+1229
+now run thecode and check eith adding /chairs
+1230
+now open Models/Chairs.cs
+1231
+now add the code that given.
+1232
+now run the code and test the options in the site.
+1233
+now open the Edit.cshtml and exmaine the two action methods added im it.
+1234
+Recalled the format for routing set in the Program.cs file,
+1234
+Opened the chairs controller to view the GET Edit method, which loads a chair for the edit form.
+now we Notice the second Edit action method is preceded by the [HttpPost] attribute.
 Created a GitHub repository and pushed the full project.
+1235
 Added a new search filter to the Chair Index view.
+1235
 Updated ChairsController to support filtering.
+1235
 Search functionality tested — working properly.
-
+1237
 Added a new migration to include the Rating property in the Chair model.
 2025-06-01 
 203833
@@ -71,6 +117,14 @@ Tested input validation — works correctly in the UI.
 Reviewed and tested the Details and Delete methods in ChairsController.
 1437
 Confirmed full functionality — everything working as expected.
+2025-06-03 
+1104
+we added logo on project the picture is about chair 
+1109
+so we tried this and its working completely.
+1135 
+
+
 
 
 
