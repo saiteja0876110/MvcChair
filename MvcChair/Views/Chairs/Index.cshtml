@@ -1,59 +1,83 @@
 ﻿@model MVCChair.Models.ChairTypeViewModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "LesChairs";
 }
 
-<h1>Chairs</h1>
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="display-5">🪑 Explore Our Chairs</h1>
+        <a asp-action="Create" class="btn btn-success shadow-sm">
+            <i class="bi bi-plus-circle"></i> Add New Chair
+        </a>
+    </div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+    <!-- Filter Form -->
+    <form asp-controller="Chairs" asp-action="Index" method="get" class="row g-3 align-items-end mb-4">
+        <div class="col-md-4">
+            <label asp-for="ChairType" class="form-label">Type</label>
+            <select asp-for="ChairType" asp-items="Model.Types" class="form-select">
+                <option value="">All Types</option>
+            </select>
+        </div>
 
-<form asp-controller="Chairs" asp-action="Index" method="get">
-    <p>
-        <select asp-for="ChairType" asp-items="Model.Types">
-            <option value="">All Types</option>
-        </select>
+        <div class="col-md-4">
+            <label asp-for="SearchString" class="form-label">Brand</label>
+            <input type="text" asp-for="SearchString" class="form-control" placeholder="Search by brand..." />
+        </div>
 
-        <label>
-            Brand:
-            <input type="text" asp-for="SearchString" />
-        </label>
-        <input type="submit" value="Filter" class="btn btn-primary" />
-    </p>
-</form>
+        <div class="col-md-4">
+            <button type="submit" class="btn btn-primary w-100">
+                <i class="bi bi-funnel-fill"></i> Filter
+            </button>
+        </div>
+    </form>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>@Html.DisplayNameFor(model => model.Chairs![0].Brand)</th>
-            <th>@Html.DisplayNameFor(model => model.Chairs![0].Type)</th>
-            <th>@Html.DisplayNameFor(model => model.Chairs![0].Color)</th>
-            <th>@Html.DisplayNameFor(model => model.Chairs![0].Material)</th>
-            <th>@Html.DisplayNameFor(model => model.Chairs![0].Capacity)</th>
-            <th>@Html.DisplayNameFor(model => model.Chairs![0].Price)</th>
-            <th>@Html.DisplayNameFor(model => model.Chairs![0].Rating)</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Chairs!)
-        {
-            <tr>
-                <td>@Html.DisplayFor(modelItem => item.Brand)</td>
-                <td>@Html.DisplayFor(modelItem => item.Type)</td>
-                <td>@Html.DisplayFor(modelItem => item.Color)</td>
-                <td>@Html.DisplayFor(modelItem => item.Material)</td>
-                <td>@Html.DisplayFor(modelItem => item.Capacity)</td>
-                <td>@item.Price.ToString("C")</td>
-                <td>@Html.DisplayFor(modelItem => item.Rating)</td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+    <!-- Chairs Table -->
+    <div class="table-responsive">
+        <table class="table table-hover align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Chairs![0].Brand)</th>
+                    <th>@Html.DisplayNameFor(model => model.Chairs![0].Type)</th>
+                    <th>@Html.DisplayNameFor(model => model.Chairs![0].Color)</th>
+                    <th>@Html.DisplayNameFor(model => model.Chairs![0].Material)</th>
+                    <th>@Html.DisplayNameFor(model => model.Chairs![0].Capacity)</th>
+                    <th>@Html.DisplayNameFor(model => model.Chairs![0].Price)</th>
+                    <th>@Html.DisplayNameFor(model => model.Chairs![0].Rating)</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Chairs!)
+                {
+                    <tr>
+                        <td>@item.Brand</td>
+                        <td><span class="badge bg-info text-dark">@item.Type</span></td>
+                        <td>@item.Color</td>
+                        <td>@item.Material</td>
+                        <td>@item.Capacity kg</td>
+                        <td>@item.Price.ToString("C")</td>
+                        <td>
+                            <span class="text-warning">
+                                @string.Concat(Enumerable.Repeat("★", (int)Math.Round(item.Rating)))
+                            </span>
+                            <small class="text-muted">(@item.Rating)</small>
+                        </td>
+                        <td class="text-center">
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning me-1">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info text-white me-1">
+                                <i class="bi bi-eye"></i>
+                            </a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">
+                                <i class="bi bi-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
