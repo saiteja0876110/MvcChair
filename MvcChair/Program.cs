@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using MvcChair.Data; // Make sure your namespace matches your project
+using MvcChair.Data; 
 using MVCChair.Models;
 using System;
 using System.Linq;
