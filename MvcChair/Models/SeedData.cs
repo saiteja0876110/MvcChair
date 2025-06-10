@@ -23,6 +23,16 @@ namespace MVCChair.Models
                 context.Chair.AddRange(
                     new Chair
                     {
+                        Brand = "STRUCTUBE",
+                        Type = "Lounge",
+                        Color = "Grey",
+                        Material = "Fabric",
+                        Capacity = 125,
+                        Price = 79.99M,
+                        Rating = 4
+                    },
+                    new Chair
+                    {
                         Brand = "IKEA",
                         Type = "Office Chair",
                         Color = "Black",
